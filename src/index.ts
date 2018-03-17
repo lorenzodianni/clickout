@@ -1,5 +1,6 @@
 const SYMBOL_CORE: string = '[[Core]]';
 const SYMBOL_EVENT: string = '[[Event]]';
+const SYMBOL_ELEMENT: string = '[[Element]]';
 
 export type onCLickOut = (e: Event) => void;
 export type destroyClickOut = () => void;
@@ -10,32 +11,32 @@ interface ClickOutElement extends HTMLElement {
 
 export default class ClickOut {
 
-  static bindCustomEvent(value: string | HTMLElement): destroyClickOut {
-    const el = ClickOut.element(value);
+  public static bindCustomEvent(value: string | HTMLElement): destroyClickOut {
+    const el = ClickOut[SYMBOL_ELEMENT](value);
     let event = ClickOut[SYMBOL_EVENT]();
     const dispatch = () => el.dispatchEvent(event);
     const destroy = () => event = null;
     return this[SYMBOL_CORE](el, dispatch, destroy);
   }
 
-  static bind(value: string | HTMLElement, onClickOut: onCLickOut): destroyClickOut {
+  public static bind(value: string | HTMLElement, onClickOut: onCLickOut): destroyClickOut {
     return this[SYMBOL_CORE](value, onClickOut);
   }
 
-  static destroy(value: string | HTMLElement): void {
-    const el = <ClickOutElement>ClickOut.element(value);
+  public static destroy(value: string | HTMLElement): void {
+    const el = <ClickOutElement>ClickOut[SYMBOL_ELEMENT](value);
     el && el.destroyClickOut && el.destroyClickOut();
   }
 
-  static element(el: string | HTMLElement): HTMLElement {
+  private static [SYMBOL_ELEMENT](el: string | HTMLElement): HTMLElement {
     if (!el) {
       throw 'Define a clickout element';
     }
     return typeof el === 'string' ? document.querySelector(el) : el;
   }
 
-  static [SYMBOL_CORE](value: string | HTMLElement, onClickOut: onCLickOut, fnDestroy?: () => void): destroyClickOut {
-    const el = <ClickOutElement>ClickOut.element(value);
+  private static [SYMBOL_CORE](value: string | HTMLElement, onClickOut: onCLickOut, fnDestroy?: () => void): destroyClickOut {
+    const el = <ClickOutElement>ClickOut[SYMBOL_ELEMENT](value);
 
     function onClick(e: Event): void {
       if (!el.contains(e.target as HTMLElement)) {
@@ -60,7 +61,7 @@ export default class ClickOut {
     return destroyClickOut;
   }
 
-  static [SYMBOL_EVENT](): CustomEvent {
+  private static [SYMBOL_EVENT](): CustomEvent {
     return new CustomEvent('clickout', {
       bubbles: true,
       cancelable: true,

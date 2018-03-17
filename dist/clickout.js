@@ -13,11 +13,12 @@
     Object.defineProperty(exports, "__esModule", { value: true });
     var SYMBOL_CORE = '[[Core]]';
     var SYMBOL_EVENT = '[[Event]]';
+    var SYMBOL_ELEMENT = '[[Element]]';
     var ClickOut = /** @class */ (function () {
         function ClickOut() {
         }
         ClickOut.bindCustomEvent = function (value) {
-            var el = ClickOut.element(value);
+            var el = ClickOut[SYMBOL_ELEMENT](value);
             var event = ClickOut[SYMBOL_EVENT]();
             var dispatch = function () { return el.dispatchEvent(event); };
             var destroy = function () { return event = null; };
@@ -27,17 +28,17 @@
             return this[SYMBOL_CORE](value, onClickOut);
         };
         ClickOut.destroy = function (value) {
-            var el = ClickOut.element(value);
+            var el = ClickOut[SYMBOL_ELEMENT](value);
             el && el.destroyClickOut && el.destroyClickOut();
         };
-        ClickOut.element = function (el) {
+        ClickOut[SYMBOL_ELEMENT] = function (el) {
             if (!el) {
                 throw 'Define a clickout element';
             }
             return typeof el === 'string' ? document.querySelector(el) : el;
         };
         ClickOut[SYMBOL_CORE] = function (value, onClickOut, fnDestroy) {
-            var el = ClickOut.element(value);
+            var el = ClickOut[SYMBOL_ELEMENT](value);
             function onClick(e) {
                 if (!el.contains(e.target)) {
                     onClickOut && onClickOut(e);
