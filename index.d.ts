@@ -1,7 +1,7 @@
 export declare type onCLickOut = (e: Event) => void;
 export declare type destroyClickOut = () => void;
 export default class ClickOut {
-    static bindCustomEvent(value: string | HTMLElement): destroyClickOut;
-    static bind(value: string | HTMLElement, onClickOut: onCLickOut): destroyClickOut;
-    static destroy(value: string | HTMLElement): void;
+    static bindCustomEvent(element: string | HTMLElement): destroyClickOut;
+    static bind(element: string | HTMLElement, onClickOut: onCLickOut): destroyClickOut;
+    static destroy(element: string | HTMLElement): void;
 }

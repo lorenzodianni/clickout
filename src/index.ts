@@ -11,20 +11,20 @@ interface ClickOutElement extends HTMLElement {
 
 export default class ClickOut {
 
-  public static bindCustomEvent(value: string | HTMLElement): destroyClickOut {
-    const el = ClickOut[SYMBOL_ELEMENT](value);
+  public static bindCustomEvent(element: string | HTMLElement): destroyClickOut {
+    const el = ClickOut[SYMBOL_ELEMENT](element);
     let event = ClickOut[SYMBOL_EVENT]();
     const dispatch = () => el.dispatchEvent(event);
     const destroy = () => event = null;
     return this[SYMBOL_CORE](el, dispatch, destroy);
   }
 
-  public static bind(value: string | HTMLElement, onClickOut: onCLickOut): destroyClickOut {
-    return this[SYMBOL_CORE](value, onClickOut);
+  public static bind(element: string | HTMLElement, onClickOut: onCLickOut): destroyClickOut {
+    return this[SYMBOL_CORE](element, onClickOut);
   }
 
-  public static destroy(value: string | HTMLElement): void {
-    const el = <ClickOutElement>ClickOut[SYMBOL_ELEMENT](value);
+  public static destroy(element: string | HTMLElement): void {
+    const el = <ClickOutElement>ClickOut[SYMBOL_ELEMENT](element);
     el && el.destroyClickOut && el.destroyClickOut();
   }
 
@@ -35,8 +35,8 @@ export default class ClickOut {
     return typeof el === 'string' ? document.querySelector(el) : el;
   }
 
-  private static [SYMBOL_CORE](value: string | HTMLElement, onClickOut: onCLickOut, fnDestroy?: () => void): destroyClickOut {
-    const el = <ClickOutElement>ClickOut[SYMBOL_ELEMENT](value);
+  private static [SYMBOL_CORE](element: string | HTMLElement, onClickOut: onCLickOut, fnDestroy?: () => void): destroyClickOut {
+    const el = <ClickOutElement>ClickOut[SYMBOL_ELEMENT](element);
 
     function onClick(e: Event): void {
       if (!el.contains(e.target as HTMLElement)) {

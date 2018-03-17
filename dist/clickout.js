@@ -17,18 +17,18 @@
     var ClickOut = /** @class */ (function () {
         function ClickOut() {
         }
-        ClickOut.bindCustomEvent = function (value) {
-            var el = ClickOut[SYMBOL_ELEMENT](value);
+        ClickOut.bindCustomEvent = function (element) {
+            var el = ClickOut[SYMBOL_ELEMENT](element);
             var event = ClickOut[SYMBOL_EVENT]();
             var dispatch = function () { return el.dispatchEvent(event); };
             var destroy = function () { return event = null; };
             return this[SYMBOL_CORE](el, dispatch, destroy);
         };
-        ClickOut.bind = function (value, onClickOut) {
-            return this[SYMBOL_CORE](value, onClickOut);
+        ClickOut.bind = function (element, onClickOut) {
+            return this[SYMBOL_CORE](element, onClickOut);
         };
-        ClickOut.destroy = function (value) {
-            var el = ClickOut[SYMBOL_ELEMENT](value);
+        ClickOut.destroy = function (element) {
+            var el = ClickOut[SYMBOL_ELEMENT](element);
             el && el.destroyClickOut && el.destroyClickOut();
         };
         ClickOut[SYMBOL_ELEMENT] = function (el) {
@@ -37,8 +37,8 @@
             }
             return typeof el === 'string' ? document.querySelector(el) : el;
         };
-        ClickOut[SYMBOL_CORE] = function (value, onClickOut, fnDestroy) {
-            var el = ClickOut[SYMBOL_ELEMENT](value);
+        ClickOut[SYMBOL_CORE] = function (element, onClickOut, fnDestroy) {
+            var el = ClickOut[SYMBOL_ELEMENT](element);
             function onClick(e) {
                 if (!el.contains(e.target)) {
                     onClickOut && onClickOut(e);
