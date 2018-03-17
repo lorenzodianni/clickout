@@ -5,10 +5,10 @@
  */
 
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-    typeof define === 'function' && define.amd ? define(['exports'], factory) :
-    (factory((global.ClickOut = {})));
-}(this, (function (exports) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory() :
+    typeof define === 'function' && define.amd ? define(factory) :
+    (factory());
+}(this, (function () { 'use strict';
 
     Object.defineProperty(exports, "__esModule", { value: true });
     var SYMBOL_CORE = '[[Core]]';
@@ -66,7 +66,5 @@
         return ClickOut;
     }());
     exports.ClickOut = ClickOut;
-
-    Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
