@@ -22,6 +22,7 @@
             var event = ClickOut[SYMBOL_EVENT]();
             var dispatch = function () { return el.dispatchEvent(event); };
             var destroy = function () { return event = null; };
+            console.log('cache');
             return this[SYMBOL_CORE](el, dispatch, destroy);
         };
         ClickOut.bind = function (element, onClickOut) {

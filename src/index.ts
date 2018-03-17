@@ -16,6 +16,7 @@ export class ClickOut {
     let event = ClickOut[SYMBOL_EVENT]();
     const dispatch = () => el.dispatchEvent(event);
     const destroy = () => event = null;
+    console.log('cache');
     return this[SYMBOL_CORE](el, dispatch, destroy);
   }
 
