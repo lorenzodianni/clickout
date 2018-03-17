@@ -5,10 +5,10 @@
  */
 
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory() :
-    typeof define === 'function' && define.amd ? define(factory) :
-    (factory());
-}(this, (function () { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+    typeof define === 'function' && define.amd ? define(['exports'], factory) :
+    (factory((global.ClickOut = {})));
+}(this, (function (exports) { 'use strict';
 
     Object.defineProperty(exports, "__esModule", { value: true });
     var SYMBOL_CORE = '[[Core]]';
@@ -22,7 +22,6 @@
             var event = ClickOut[SYMBOL_EVENT]();
             var dispatch = function () { return el.dispatchEvent(event); };
             var destroy = function () { return event = null; };
-            console.log('cache');
             return this[SYMBOL_CORE](el, dispatch, destroy);
         };
         ClickOut.bind = function (element, onClickOut) {
@@ -66,6 +65,8 @@
         };
         return ClickOut;
     }());
-    exports.ClickOut = ClickOut;
+    exports.default = ClickOut;
+
+    Object.defineProperty(exports, '__esModule', { value: true });
 
 })));

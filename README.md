@@ -7,16 +7,9 @@ npm install clickout --save
 
 ## Import
 
-ES6
 ```js
 import ClickOut from 'clickout';
 ```
-
-Classic
-```html
-<script src="your/path/clickout.js"></script>
-```
-
 
 ## API
 ```js

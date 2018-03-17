@@ -6,17 +6,16 @@ export type onCLickOut = (e: Event) => void;
 export type destroyClickOut = () => void;
 
 interface ClickOutElement extends HTMLElement {
-  destroyClickOut: () => any
+  destroyClickOut: destroyClickOut
 }
 
-export class ClickOut {
+export default class ClickOut {
 
   public static bindCustomEvent(element: string | HTMLElement): destroyClickOut {
     const el = ClickOut[SYMBOL_ELEMENT](element);
     let event = ClickOut[SYMBOL_EVENT]();
     const dispatch = () => el.dispatchEvent(event);
     const destroy = () => event = null;
-    console.log('cache');
     return this[SYMBOL_CORE](el, dispatch, destroy);
   }
 
