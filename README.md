@@ -43,12 +43,12 @@ ClickOut.bindCustomEvent(element);
 
 // Listen on 'clickout' event emitted from the element
 element.addEventListener('clickout', (e) => {
-  console.log(`You clicked ${e.target} and it's out of ${element}`)
+  console.log(`You clicked an element outside of ${e.target}`);
 })
 
 // elsewhere on your code
 element.addEventListener('clickout', (e) => {
-  console.log(`I'm triggered too on ${element} clickout!`)
+  console.log(`I'm triggered too on clickout ${e.target}!`)
 })
 ```
 
@@ -70,7 +70,7 @@ const element = document.querySelector('#myElement');
 ClickOut.bindCustomEvent(element);
 
 element.addEventListener('clickout', (e) => {
-  console.log(`You clicked ${e.target} and it's out of ${element}`)
+  console.log(`You clicked an element outside of ${e.target}`);
 });
 
 ClickOut.destroy(element);
@@ -83,7 +83,7 @@ ClickOut.destroy(element);
 const destroyClickOutElement = ClickOut.bindCustomEvent(element);
 
 element.addEventListener('clickout', (e) => {
-  console.log(`You clicked ${e.target} and it's out of ${element}`)
+  console.log(`You clicked an element outside of ${e.target}`);
 });
 
 destroyClickOutElement();
