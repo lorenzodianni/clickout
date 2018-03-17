@@ -1,0 +1,36 @@
+{
+  "name": "clickout",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:bundle": "tsc && rollup -c",
+    "build:minify": "uglifyjs --c --m -o dist/clickout.min.js -- dist/clickout.js",
+    "build": "npm-run-all build:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lorenzodianni/clickout.git"
+  },
+  "author": "Lorenzo D'Ianni <lorenzodianni@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lorenzodianni/clickout/issues"
+  },
+  "homepage": "https://github.com/lorenzodianni/clickout#readme",
+  "keywords": [
+    "javascript",
+    "event",
+    "clickout",
+    "custom event"
+  ],
+  "devDependencies": {
+    "eslint": "^4.19.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "npm-run-all": "^4.1.2",
+    "rollup": "^0.57.1",
+    "tslint": "^5.9.1",
+    "typescript": "^2.7.2",
+    "uglify-js": "^3.3.15"
+  }
+}
