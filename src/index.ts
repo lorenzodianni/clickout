@@ -9,7 +9,7 @@ interface ClickOutElement extends HTMLElement {
   destroyClickOut: () => any
 }
 
-export default class ClickOut {
+export class ClickOut {
 
   public static bindCustomEvent(element: string | HTMLElement): destroyClickOut {
     const el = ClickOut[SYMBOL_ELEMENT](element);

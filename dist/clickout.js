@@ -65,7 +65,7 @@
         };
         return ClickOut;
     }());
-    exports.default = ClickOut;
+    exports.ClickOut = ClickOut;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
