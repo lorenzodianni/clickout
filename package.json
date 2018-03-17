@@ -1,11 +1,13 @@
 {
   "name": "clickout",
   "version": "1.0.0",
-  "description": "",
+  "description": "Register clickout event in javascript",
   "main": "index.js",
+  "typings": "index.d.ts",
   "scripts": {
     "build:bundle": "tsc && rollup -c",
     "build:minify": "uglifyjs --c --m -o dist/clickout.min.js -- dist/clickout.js",
+    "build:declaration": "cp src/index.d.ts ./",
     "build": "npm-run-all build:*"
   },
   "repository": {
