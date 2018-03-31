@@ -1,9 +1,15 @@
+[![GitHub release](https://img.shields.io/github/release/lorenzodianni/clickout.svg)](https://github.com/lorenzodianni/clickout/releases)
+[![npm](https://img.shields.io/npm/v/clickout.svg)](https://www.npmjs.com/package/clickout)
+
 # ClickOut
 Register clickout event in javascript
 
 ```ssh
 npm install clickout --save
 ```
+
+## Demo
+* [RawGit](https://rawgit.com/lorenzodianni/clickout/master/demo/index.html)
 
 ## Import
 
