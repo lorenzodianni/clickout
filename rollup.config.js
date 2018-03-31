@@ -13,7 +13,7 @@ export default {
     name: 'ClickOut',
     file: 'dist/clickout.js',
     format: 'umd',
-    exports: 'named',
+    exports: 'default',
     banner: info,
   }
 };
